@@ -3,38 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Calculator</title>
+    <title>Sleek Tailwind Calculator</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="calculator">
-        <input type="text" id="display" readonly>
-        <div class="keys">
-            <button class="clear" onclick="clearDisplay()">C</button>
-            <button class="operator" onclick="appendInput('/')">/</button>
-            <button class="operator" onclick="appendInput('*')">*</button>
-            <button class="operator" onclick="deleteLast()">DEL</button>
-            
-            <button onclick="appendInput('7')">7</button>
-            <button onclick="appendInput('8')">8</button>
-            <button onclick="appendInput('9')">9</button>
-            <button class="operator" onclick="appendInput('-')">-</button>
-            
-            <button onclick="appendInput('4')">4</button>
-            <button onclick="appendInput('5')">5</button>
-            <button onclick="appendInput('6')">6</button>
-            <button class="operator" onclick="appendInput('+')">+</button>
-            
-            <button onclick="appendInput('1')">1</button>
-            <button onclick="appendInput('2')">2</button>
-            <button onclick="appendInput('3')">3</button>
-            <button class="equal-btn" onclick="calculate()">=</button>
 
-            <button class="zero" onclick="appendInput('0')">0</button>
-            <button onclick="appendInput('.')">.</button>
+    <div class="calculator-container w-full max-w-xs p-5 bg-gray-800 rounded-xl shadow-2xl">
+
+        <input type="text" id="display" readonly 
+               class="calculator-display w-full h-16 mb-5 text-4xl text-right text-white rounded-lg p-2 border-2 border-indigo-700" 
+               value="0">
+        
+        <div class="grid grid-cols-4 gap-4">
             
+            <button class="col-span-2 btn-special" onclick="appendToDisplay('C')">C</button>
+            <button class="btn-special" onclick="appendToDisplay('/')">/</button>
+            <button class="btn-operator" onclick="appendToDisplay('*')">*</button>
+            
+            <button class="btn-number" onclick="appendToDisplay('7')">7</button>
+            <button class="btn-number" onclick="appendToDisplay('8')">8</button>
+            <button class="btn-number" onclick="appendToDisplay('9')">9</button>
+            <button class="btn-operator" onclick="appendToDisplay('-')">-</button>
+            
+            <button class="btn-number" onclick="appendToDisplay('4')">4</button>
+            <button class="btn-number" onclick="appendToDisplay('5')">5</button>
+            <button class="btn-number" onclick="appendToDisplay('6')">6</button>
+            <button class="btn-operator" onclick="appendToDisplay('+')">+</button>
+            
+            <button class="btn-number" onclick="appendToDisplay('1')">1</button>
+            <button class="btn-number" onclick="appendToDisplay('2')">2</button>
+            <button class="btn-number" onclick="appendToDisplay('3')">3</button>
+            <button class="btn-number" onclick="appendToDisplay('.')">.</button>
+            
+            <button class="col-span-2 btn-number" onclick="appendToDisplay('0')">0</button>
+            <button class="btn-equal" onclick="calculate()">=</button>
+            <button class="btn-special" onclick="backspace()">DEL</button>
         </div>
+
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

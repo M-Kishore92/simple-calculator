@@ -1,30 +1,33 @@
-// Get the display input element
 const display = document.getElementById('display');
 
-// Function to append characters to the display
-function appendInput(value) {
-    display.value += value;
+function appendToDisplay(value) {
+    if (value === 'C') {
+        clearDisplay();
+        return;
+    }
+    
+    // Handle initial '0' replacement for numbers
+    if (display.value === '0' && !isNaN(parseInt(value)) && value !== '.') {
+        display.value = value;
+    } else {
+        display.value += value;
+    }
 }
 
-// Function to clear the entire display
 function clearDisplay() {
-    display.value = '';
+    display.value = '0';
 }
 
-// Function to delete the last character
-function deleteLast() {
-    display.value = display.value.slice(0, -1);
-}
-
-// Function to calculate the result
 function calculate() {
     try {
-        // Use the built-in eval() function to calculate the result of the expression
-        // NOTE: While simple, eval() should be avoided in production for security reasons.
-        // For this simple practice project, it is sufficient.
+        // Warning: 'eval' is used for simplicity but should be avoided in production code.
         display.value = eval(display.value);
-    } catch (error) {
-        // Display 'Error' if the expression is invalid
+    } catch (e) {
         display.value = 'Error';
     }
+}
+
+function backspace() {
+    // Remove the last character, and if the result is empty, set it back to '0'
+    display.value = display.value.slice(0, -1) || '0';
 }

@@ -1,85 +1,43 @@
+/* Base styles not covered by Tailwind utilities */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
+    background-color: #1a1a2e;
 }
 
-.calculator {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    padding: 20px;
+/* Darker background for the display screen */
+.calculator-display {
+    background-color: #0d0d1a; 
 }
 
-#display {
-    width: 100%;
-    height: 60px;
-    margin-bottom: 20px;
-    padding: 10px;
-    font-size: 2em;
-    text-align: right;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
-}
+/* --- Tailwind CSS Component Definitions using @apply --- */
+/* WRAP ALL YOUR @APPLY CODE IN @layer components */
+@layer components {
+    /* Define Button Base Style */
+    .btn-base {
+        @apply p-4 rounded-xl text-2xl font-semibold transition ease-in-out duration-150 transform hover:scale-105;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    }
 
-.keys {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns of equal size */
-    gap: 10px;
-}
+    /* Define Button Styles for Numbers */
+    .btn-number {
+        @apply btn-base bg-gray-700 text-white hover:bg-gray-600 active:bg-gray-500;
+    }
 
-.keys button {
-    padding: 20px;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #e0e0e0;
-    transition: background-color 0.1s;
-}
+    /* Define Button Styles for Operators (+, -, *, /) */
+    .btn-operator {
+        @apply btn-base bg-indigo-600 text-white hover:bg-indigo-500 active:bg-indigo-400;
+    }
 
-.keys button:hover {
-    background-color: #d1d1d1;
-}
+    /* Define Button Styles for Special Functions (C, DEL) */
+    .btn-special {
+        @apply btn-base bg-gray-600 text-indigo-300 hover:bg-gray-500 active:bg-gray-400;
+    }
 
-.operator {
-    background-color: #ff9500;
-    color: white;
-}
-
-.operator:hover {
-    background-color: #e08500;
-}
-
-.clear {
-    background-color: #ff3b30;
-    color: white;
-}
-
-.clear:hover {
-    background-color: #e0352c;
-}
-
-.equal-btn {
-    background-color: #4cd964;
-    color: white;
-    grid-row: span 2; /* Make the equals button span two rows */
-    height: 100px; /* Adjust height for the span */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.equal-btn:hover {
-    background-color: #40c455;
-}
-
-.zero {
-    grid-column: span 2; /* Make the 0 button span two columns */
+    /* Define Button Style for Equals (=) */
+    .btn-equal {
+        @apply btn-base bg-green-500 text-white hover:bg-green-400 active:bg-green-300 col-span-1;
+    }
 }
